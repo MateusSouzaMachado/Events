@@ -13,4 +13,11 @@ public class Activity {
     private String name;
     private String description;
 
+    @ManyToOne
+    @JoinColumn(name = "Speaker_id")
+    private Speaker speaker;
+
+    @ManyToOne
+    @JoinColumn(name = "Event_id")
+    private Event event;
 }

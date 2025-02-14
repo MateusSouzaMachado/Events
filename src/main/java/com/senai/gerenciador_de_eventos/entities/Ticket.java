@@ -12,4 +12,12 @@ public class Ticket {
     private Long id;
     private TicketType type;
     private Double price;
+
+    @ManyToOne
+    @JoinColumn(name = "event_id")
+    private Event event;
+
+    @ManyToOne
+    @JoinColumn(name = "participant_id")
+    private Participant participant;
 }

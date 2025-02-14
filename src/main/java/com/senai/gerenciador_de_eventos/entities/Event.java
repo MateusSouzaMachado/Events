@@ -5,6 +5,7 @@ import lombok.Data;
 
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -29,6 +30,11 @@ public class Event {
     @JoinTable(name = "tb_event_participant",
             joinColumns = @JoinColumn(name = "event_id"),
             inverseJoinColumns = @JoinColumn(name = "participant_id"))
-    private Set<Participant> participants = new HashSet<>();
+    private List<Participant> participants;
 
+    @OneToMany(mappedBy = "event")
+    private List<Ticket> tickets;
+
+    @OneToMany(mappedBy = "event")
+    private List<Activity> activities;
 }

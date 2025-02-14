@@ -3,8 +3,9 @@ package com.senai.gerenciador_de_eventos.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.HashSet;
-import java.util.Set;
+
+import java.util.List;
+
 
 @Data
 @Entity
@@ -17,5 +18,8 @@ public class Participant {
     private String email;
 
     @ManyToMany(mappedBy = "participants")
-    private Set<Event> events = new HashSet<>();
+    private List<Event> events;
+
+    @OneToMany(mappedBy = "participant")
+    private List<Ticket> tickets;
 }
